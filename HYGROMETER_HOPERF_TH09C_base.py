@@ -6,7 +6,7 @@ class HYGROMETER_HOPERF_TH09C_base:
     def __init__(self, I2C):
         self.I2C = I2C
     # The crc7(val)function returns the CRC-7 of a 17 bits value val
-    # Compute the CRC-7 of ëvalí (should only have 17 bits)
+    # Compute the CRC-7 of ‚Äòval‚Äô (should only have 17 bits)
     def crc7(self, val):
         CRC7WIDTH = 7 # 7 bits CRC has polynomial of 7th order (has 8 terms)
         CRC7POLY = 0x89 # The 8 coefficients of the polynomial
@@ -36,8 +36,8 @@ class HYGROMETER_HOPERF_TH09C_base:
     def device_check(self): self.I2C.INIT(); ack = not self.I2C.wr_byte(self.TH09C_DEVICE_ADDRESS); self.I2C.TERM(); return ack
     def measure(self):
         H, T = 0.0, 0.0
-        # œŒœ€“ ¿ œŒÀ”◊»“‹ ƒ¿ÕÕ€≈ — √»√–Œ-“≈–ÃŒÃ≈“–¿ Œ“ ´HOPERFª
-        # »—“Œ◊Õ» : <<TH09C_Datasheet_V1.01.pdf>>
+        # –ü–æ–ª—É—á–µ–Ω–∏–µ –¥–∞–Ω–Ω—ã—Ö –æ–± –æ—Ç–Ω–æ—Å–∏—Ç–µ–ª—å–Ω–æ–π –≤–ª–∞–∂–Ω–æ—Å—Ç–∏ –∏ —Ç–µ–º–ø–µ—Ä–∞—Ç—É—Ä–µ –≤–æ–∑–¥—É—Ö–∞, –∑–∞—â–∏—â—ë–Ω–Ω—ã—Ö –∫–æ–Ω—Ç—Ä–æ–ª—å–Ω–æ–π —Å—É–º–º–æ–π:
+        # –∏—Å—Ç–æ—á–Ω–∏–∫: <<TH09C_Datasheet_V1.01.pdf>>
         self.I2C.INIT(); ack = not self.I2C.wr_byte(self.TH09C_DEVICE_ADDRESS); self.I2C.wr_byte(0x22); self.I2C.wr_byte(0x03); self.I2C.TERM()
         if ack:
             time.sleep(0.130) # Wait for measurements to complete
